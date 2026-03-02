@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Service Announcement | UE Zenith Esports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .article-hero { position:relative;min-height:52vh;display:flex;align-items:flex-end;overflow:hidden; }
+        .article-hero-img { position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.25;filter:saturate(0.3); }
+        .article-hero-overlay { position:absolute;inset:0;background:linear-gradient(to top,#0a0a0a 28%,rgba(10,10,10,0.6) 65%,transparent 100%); }
+        .article-hero-content { position:relative;z-index:2;padding:64px 40px;max-width:960px;margin:0 auto;width:100%; }
+        .article-meta { display:flex;align-items:center;gap:14px;font-family:"Roboto Mono",monospace;font-size:0.7rem;letter-spacing:0.18em;color:var(--red);text-transform:uppercase;margin-bottom:18px; }
+        .article-meta span { color:#444; }
+        .article-title { font-family:"Bebas Neue",sans-serif;font-size:clamp(3rem,9vw,7rem);line-height:0.92;letter-spacing:0.02em;color:#fff;margin-bottom:18px; }
+        .article-title .accent { color:var(--red); }
+        .article-subtitle { font-family:"Oswald",sans-serif;font-weight:300;font-size:1.05rem;color:rgba(255,255,255,0.45);max-width:600px;line-height:1.65; }
+        .back-bar { background:#070707;padding:18px 40px;border-bottom:1px solid rgba(255,255,255,0.06); }
+        .back-link { font-family:"Roboto Mono",monospace;font-size:0.7rem;letter-spacing:0.18em;color:#555;text-decoration:none;text-transform:uppercase;transition:color 0.2s; }
+        .back-link:hover { color:var(--red); }
+        .article-body { background:#0d0d0d;padding:80px 40px; }
+        .article-body-inner { max-width:740px;margin:0 auto; }
+        .article-body p { font-family:"Oswald",sans-serif;font-weight:300;font-size:1.05rem;line-height:1.9;color:rgba(255,255,255,0.6);margin-bottom:26px; }
+        .article-body p strong { color:#fff;font-weight:600; }
+
+        /* PSA official box */
+        .psa-box {
+            border:1px solid rgba(229,9,20,0.4);
+            background:rgba(229,9,20,0.03);
+            padding:36px 40px;
+            margin:44px 0;
+        }
+        .psa-box-label {
+            font-family:"Roboto Mono",monospace;font-size:0.65rem;
+            letter-spacing:0.3em;color:var(--red);text-transform:uppercase;
+            margin-bottom:20px;display:flex;align-items:center;gap:10px;
+        }
+        .psa-box-label::after { content:'';flex:1;height:1px;background:rgba(229,9,20,0.2); }
+        .psa-box p {
+            font-family:"Oswald",sans-serif;font-weight:300;font-size:1rem;
+            line-height:1.85;color:rgba(255,255,255,0.65);margin-bottom:20px;
+        }
+        .psa-box p:last-child { margin-bottom:0; }
+        .psa-box p strong { color:#fff;font-weight:600; }
+        .psa-box p em { color:rgba(255,255,255,0.5);font-style:italic; }
+
+        /* Report block */
+        .report-block {
+            border-left:4px solid var(--red);
+            padding:18px 30px;margin:36px 0;
+            background:rgba(229,9,20,0.04);
+        }
+        .report-block-label { font-family:"Roboto Mono",monospace;font-size:0.62rem;letter-spacing:0.25em;color:var(--red);text-transform:uppercase;margin-bottom:12px; }
+        .report-block p { font-family:"Oswald",sans-serif;font-weight:300;font-size:0.95rem;line-height:1.75;color:rgba(255,255,255,0.6);margin:0; }
+        .report-block a { color:var(--red);text-decoration:underline; }
+
+        .article-img-block { margin:44px 0;border:1px solid rgba(255,255,255,0.07);overflow:hidden; }
+        .article-img-block img { width:100%;max-height:600px;object-fit:contain;object-position:center;display:block;background:#111; }
+        .article-img-cap { padding:10px 14px;font-family:"Roboto Mono",monospace;font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.12em;border-top:1px solid rgba(255,255,255,0.06); }
+
+        .article-divider { border:none;border-top:1px solid rgba(255,255,255,0.08);margin:44px 0; }
+        .article-tags { display:flex;flex-wrap:wrap;gap:10px;margin-top:52px; }
+        .article-tag { font-family:"Roboto Mono",monospace;font-size:0.65rem;letter-spacing:0.14em;padding:6px 14px;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.3);text-decoration:none;text-transform:uppercase;transition:all 0.2s; }
+        .article-tag:hover { border-color:var(--red);color:var(--red); }
+        .article-footer-note { font-family:"Roboto Mono",monospace;font-size:0.65rem;letter-spacing:0.2em;color:rgba(255,255,255,0.15); }
+
+        .related-section { background:#0a0a0a;padding:64px 40px;border-top:1px solid rgba(255,255,255,0.06); }
+        .related-section-inner { max-width:740px;margin:0 auto; }
+        .related-heading { font-family:"Roboto Mono",monospace;font-size:0.65rem;letter-spacing:0.3em;color:var(--red);text-transform:uppercase;margin-bottom:24px; }
+        .related-links { display:flex;flex-direction:column;gap:0; }
+        .related-link { display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.06);text-decoration:none;transition:padding-left 0.2s; }
+        .related-link:hover { padding-left:8px; }
+        .related-link-title { font-family:"Bebas Neue",sans-serif;font-size:1.3rem;color:#fff;transition:color 0.2s; }
+        .related-link:hover .related-link-title { color:var(--red); }
+        .related-link-date { font-family:"Roboto Mono",monospace;font-size:0.62rem;color:rgba(255,255,255,0.2);letter-spacing:0.12em; }
+        @media(max-width:768px) {
+            .article-hero-content{padding:48px 20px;}
+            .back-bar{padding:16px 20px;}
+            .article-body{padding:52px 20px;}
+            .psa-box{padding:24px 20px;}
+            .related-section{padding:48px 20px;}
+        }
+    </style>
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-ring"></div>
+<div id="scroll-progress"></div><div class="noise-overlay"></div>
+
+<nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+        <a href="main.html" class="nav-logo"><img src="zenith_logo.png" alt="UE Zenith Esports" class="nav-logo-img"></a>
+        <div class="nav-links">
+            <a href="main.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a>
+            <a href="whatwedo.html" class="nav-link">What We Do</a><a href="activities.html" class="nav-link">Activities</a>
+            <a href="news.html" class="nav-link active">News &amp; Events</a>
+            <a href="contact.html" class="nav-link">Contact</a><a href="developers.html" class="nav-link-cta">Developers</a>
+        </div>
+        <button class="nav-burger" id="burger">☰</button>
+    </div>
+    <div class="nav-mobile" id="mobile-menu">
+        <a href="main.html">Home</a><a href="about.html">About</a><a href="whatwedo.html">What We Do</a>
+        <a href="activities.html">Activities</a><a href="news.html">News &amp; Events</a>
+        <a href="contact.html">Contact</a><a href="developers.html">Developers</a>
+    </div>
+</nav>
+
+<div class="back-bar"><a href="news.html" class="back-link">← Back to News &amp; Events</a></div>
+
+<section class="article-hero">
+    <img src="news.jpg" alt="Public Service Announcement" class="article-hero-img"
+         onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80'">
+    <div class="article-hero-overlay"></div>
+    <div class="article-hero-content">
+        <div class="article-meta">
+            <span>2025</span><span>•</span>Official Statement<span>•</span>UE Zenith Caloocan
+        </div>
+        <h1 class="article-title">PUBLIC<br><span class="accent">SERVICE</span><br>ANNOUNCEMENT</h1>
+        <p class="article-subtitle">An official statement from UE Zenith Esports Caloocan regarding the disaffiliation of Mr. Suncell De Leon from the organization.</p>
+    </div>
+</section>
+
+<div class="article-body">
+    <div class="article-body-inner">
+
+        <p>UE Zenith Esports Caloocan is issuing this public statement in the interest of full transparency and to protect the integrity of the organization, its members, and the community it serves.</p>
+
+        <div class="article-img-block">
+            <img src="news.jpg" alt="Public Service Announcement - UE Zenith Esports"
+                 onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80'">
+            <div class="article-img-cap">// Official Public Service Announcement — UE Zenith Esports Caloocan</div>
+        </div>
+
+        <div class="psa-box">
+            <div class="psa-box-label">// Official Statement</div>
+            <p><strong>UE ZENITH ESPORTS CALOOCAN</strong> would like to formally inform the public that <em>Mr. Suncell De Leon,</em> former President of the organization, is <strong>no longer affiliated</strong> with UE Zenith Esports Caloocan in <strong>any capacity</strong>.</p>
+            <p>Effective immediately, Mr. De Leon has <strong>no authority, involvement, or connection with the organization's projects, teams, management, partnerships, operations, or activities,</strong> whether directly or indirectly.</p>
+            <p>Furthermore, he is <strong>not authorized</strong> to represent, use, or associate himself with UE Zenith Esports Caloocan's <strong>name, branding, logos, intellectual property, or any other organizational assets</strong> in any form.</p>
+        </div>
+
+        <p>This statement is being made to ensure that all members of the community, partner organizations, and the public at large are fully informed of Mr. De Leon's current standing with UE Zenith Esports Caloocan. Any actions taken under the organization's name without proper authorization will be treated accordingly.</p>
+
+        <p>UE Zenith Esports Caloocan remains committed to the principles of integrity, transparency, and accountability that have guided this organization. The leadership, members, and community of UE Zenith will continue to move forward with those values at the core of everything we do.</p>
+
+        <div class="report-block">
+            <div class="report-block-label">// Report Misuse</div>
+            <p>Should there be any information, evidence, or reports of the continued use or misrepresentation of the organization's name, identity, or intellectual property — the public is <strong>strongly encouraged to report this</strong> to UE Zenith Esports Caloocan through our official Facebook page at <a href="https://www.facebook.com/uezencal" target="_blank">facebook.com/uezencal</a> or via the organization's official email address at <a href="/cdn-cgi/l/email-protection#4a102f24233e22092b262525292b24787a787f0a2d272b232664292527"><span class="__cf_email__" data-cfemail="cd97a8a3a4b9a58eaca1a2a2aeaca3fffdfff88daaa0aca4a1e3aea2a0">[email&#160;protected]</span></a>.</p>
+        </div>
+
+        <p>We appreciate the continued support and cooperation of our community in helping us protect the integrity and interests of UE Zenith Esports Caloocan. For guidance and transparency.</p>
+
+        <hr class="article-divider">
+        <p class="article-footer-note">WE RISE &nbsp;•&nbsp; WE GRIND &nbsp;•&nbsp; WE WIN AS ONE</p>
+        <div class="article-tags">
+            <a class="article-tag">#ZenithEsports</a>
+            <a class="article-tag">#UECaloocan</a>
+            <a class="article-tag">#OfficialStatement</a>
+            <a class="article-tag">#PSA</a>
+            <a class="article-tag">#Transparency</a>
+        </div>
+    </div>
+</div>
+
+<section class="related-section">
+    <div class="related-section-inner">
+        <p class="related-heading">// More Stories</p>
+        <div class="related-links">
+            <a href="article-tekken8.html" class="related-link">
+                <span class="related-link-title">TEKKEN 8 — RTX AI PC DAY</span>
+                <span class="related-link-date">10 / 01 / 2026</span>
+            </a>
+            <a href="article-fought-with-heart.html" class="related-link">
+                <span class="related-link-title">UE ZENITH FOUGHT WITH HEART</span>
+                <span class="related-link-date">16 / 08 / 2025</span>
+            </a>
+            <a href="article-campus-legends.html" class="related-link">
+                <span class="related-link-title">CAMPUS LEGENDS ARE ON THE WAY</span>
+                <span class="related-link-date">29 / 07 / 2025</span>
+            </a>
+            <a href="article-runner-up.html" class="related-link">
+                <span class="related-link-title">UE ZENITH-CALOOCAN: 1ST RUNNER UP!</span>
+                <span class="related-link-date">15 / 05 / 2025</span>
+            </a>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <img src="zenith_logo.png" alt="UE Zenith Esports" class="footer-logo-img">
+            <div class="footer-brand-name">ZENITH ESPORTS</div>
+            <div class="footer-brand-sub">UE CALOOCAN</div>
+            <p class="footer-brand-desc">We rise higher, dominate stronger, and reach our Zenith.</p>
+        </div>
+        <div class="footer-nav-col">
+            <h4>// Navigation</h4>
+            <a href="main.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="whatwedo.html">What We Do</a>
+            <a href="activities.html">Activities</a>
+            <a href="news.html">News &amp; Events</a>
+            <a href="contact.html">Contact</a>
+            <a href="developers.html">Developers</a>
+        </div>
+        <div class="footer-social-col">
+            <h4>// Connect</h4>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/uezencal" target="_blank" class="footer-social">
+                    <span class="footer-social-icon">f</span> Facebook
+                </a>
+                <a href="mailto:ZenithCaloocan2025@gmail.com" class="footer-social">
+                    <span class="footer-social-icon">@</span> Email Us
+                </a>
+            </div>
+        </div>
+        <div class="footer-address-col">
+            <h4>// Address</h4>
+            <div class="footer-address">
+                <strong>UE Zenith Esports Caloocan</strong>
+                105 Samson Rd,<br>
+                Caloocan, Metro Manila,<br>
+                Philippines, 1400
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-copy">
+            <p>© 2026 UE Zenith Esports — Caloocan. All rights reserved.</p>
+        </div>
+        <div class="footer-tagline">WE RISE &nbsp;•&nbsp; WE GRIND &nbsp;•&nbsp; WE WIN AS ONE</div>
+    </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>

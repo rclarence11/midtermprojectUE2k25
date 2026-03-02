@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | UE Zenith Esports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-ring"></div>
+<div id="scroll-progress"></div><div class="noise-overlay"></div>
+
+<nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+        <a href="main.html" class="nav-logo">
+        <img src="zenith_logo.png" class="nav-logo-img">
+        <div class="nav-links">
+            <a href="main.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a>
+            <a href="whatwedo.html" class="nav-link">What We Do</a><a href="activities.html" class="nav-link">Activities</a>
+            <a href="news.html" class="nav-link">News & Events</a>
+            <a href="contact.html" class="nav-link active">Contact</a><a href="developers.html" class="nav-link-cta">Developers</a>
+        </div>
+        <button class="nav-burger" id="burger">☰</button>
+    </div>
+    <div class="nav-mobile" id="mobile-menu">
+        <a href="main.html">Home</a><a href="about.html">About</a><a href="whatwedo.html">What We Do</a>
+        <a href="activities.html">Activities</a><a href="members.html">Members</a>
+        <a href="news.html">News & Events</a><a href="contact.html">Contact</a><a href="developers.html">Developers</a>
+    </div>
+</nav>
+
+<section class="page-hero">
+    <div class="page-hero-bg"></div><div class="page-hero-grid"></div>
+    <div class="page-hero-content">
+        <span class="section-tag reveal">// Get In Touch</span>
+        <h1 class="section-heading reveal delay-1" style="font-size:clamp(3.5rem,10vw,8rem);">JOIN THE <span class="accent">RANKS</span></h1>
+    </div>
+</section>
+
+<section class="section section-light">
+    <div class="container">
+        <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:64px;">
+            <!-- INFO -->
+            <div class="reveal-left">
+                <span class="section-tag">// Contact Details</span>
+                <h2 class="section-heading" style="font-size:clamp(2.5rem,5vw,4rem);">INQUIRE <span class="accent">NOW</span></h2>
+                <div class="section-divider"></div>
+                <p style="font-family:'Roboto Mono',monospace;font-size:0.75rem;line-height:1.8;color:rgba(0,0,0,0.5);margin-bottom:28px;">Got any concerns? Interested in joining a team? UE Zenith Esports welcomes your inquiries with full acknowledgement!</p>
+                <div class="contact-info-list">
+                    <div class="contact-info-row"><span class="contact-info-label">SCHOOL</span><span class="contact-info-value">University of the East — Caloocan</span></div>
+                    <div class="contact-info-row"><span class="contact-info-label">ADDRESS</span><span class="contact-info-value">105 Samson Rd, Caloocan, Metro Manila 1400</span></div>
+                    <div class="contact-info-row"><span class="contact-info-label">EMAIL</span><span class="contact-info-value"><a href="mailto:ZenithCaloocan2025@gmail.com">ZenithCaloocan2025@gmail.com</a></span></div>
+                    <div class="contact-info-row"><span class="contact-info-label">FACEBOOK</span><span class="contact-info-value"><a href="https://www.facebook.com/uezencal" target="_blank">facebook.com/uezencal</a></span></div>
+                </div>
+                <div style="margin-top:28px;overflow:hidden;border:1px solid rgba(0,0,0,0.1);">
+                    <iframe src="https://maps.google.com/maps?q=105+Samson+Rd+Caloocan+Metro+Manila&output=embed" width="100%" height="200" style="border:0;display:block;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <!-- FORM -->
+            <div class="reveal-right">
+                <form onsubmit="handleForm(event)">
+                    <div class="form-grid">
+                        <div class="form-group"><label class="form-label">Your Name</label><input type="text" class="form-input" placeholder="Enter your name" required></div>
+                        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="Enter your email" required></div>
+                    </div>
+                    <div class="form-group"><label class="form-label">Subject</label><input type="text" class="form-input" placeholder="What's this about?"></div>
+                    <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" rows="6" placeholder="Your message..." style="resize:none;"></textarea></div>
+                    <button type="submit" class="btn-primary" style="width:100%;text-align:center;font-size:1.1rem;padding:16px;clip-path:none;cursor:none;"><span>SEND MESSAGE</span></button>
+                    <div class="form-success" id="form-success">✓ Message sent! We'll get back to you soon.</div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <img src="zenith_logo.png" alt="UE Zenith Esports" class="footer-logo-img">
+            <div class="footer-brand-name">ZENITH ESPORTS</div>
+            <div class="footer-brand-sub">UE CALOOCAN</div>
+            <p class="footer-brand-desc">We rise higher, dominate stronger, and reach our Zenith.</p>
+        </div>
+        <div class="footer-nav-col">
+            <h4>// Navigation</h4>
+            <a href="main.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="whatwedo.html">What We Do</a>
+            <a href="activities.html">Activities</a>
+            <a href="news.html">News &amp; Events</a>
+            <a href="contact.html">Contact</a>
+            <a href="developers.html">Developers</a>
+        </div>
+        <div class="footer-social-col">
+            <h4>// Connect</h4>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/uezencal" target="_blank" class="footer-social">
+                    <span class="footer-social-icon">f</span> Facebook
+                </a>
+                <a href="mailto:ZenithCaloocan2025@gmail.com" class="footer-social">
+                    <span class="footer-social-icon">@</span> Email Us
+                </a>
+            </div>
+        </div>
+        <div class="footer-address-col">
+            <h4>// Address</h4>
+            <div class="footer-address">
+                <strong>UE Zenith Esports Caloocan</strong>
+                105 Samson Rd,<br>
+                Caloocan, Metro Manila,<br>
+                Philippines, 1400
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-copy">
+            <p>© 2026 UE Zenith Esports — Caloocan. All rights reserved.</p>
+        </div>
+        <div class="footer-tagline">WE RISE &nbsp;•&nbsp; WE GRIND &nbsp;•&nbsp; WE WIN AS ONE</div>
+    </div>
+</footer>
+<script src="scripts.js"></script>
+</body>
+</html>
