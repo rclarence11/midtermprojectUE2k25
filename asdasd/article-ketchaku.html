@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ketchaku Showcased Incredible Skill | UE Zenith Esports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .article-hero { position:relative;min-height:62vh;display:flex;align-items:flex-end;overflow:hidden; }
+        .article-hero-img { position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.32;filter:saturate(0.5); }
+        .article-hero-overlay { position:absolute;inset:0;background:linear-gradient(to top,#0a0a0a 28%,rgba(10,10,10,0.5) 65%,transparent 100%); }
+        .article-hero-content { position:relative;z-index:2;padding:64px 40px;max-width:960px;margin:0 auto;width:100%; }
+        .article-meta { display:flex;align-items:center;gap:14px;font-family:"Roboto Mono",monospace;font-size:0.7rem;letter-spacing:0.18em;color:var(--red);text-transform:uppercase;margin-bottom:18px; }
+        .article-meta span { color:#444; }
+        .article-title { font-family:"Bebas Neue",sans-serif;font-size:clamp(3rem,9vw,7rem);line-height:0.92;letter-spacing:0.02em;color:#fff;margin-bottom:18px; }
+        .article-title .accent { color:var(--red); }
+        .article-subtitle { font-family:"Oswald",sans-serif;font-weight:300;font-size:1.05rem;color:rgba(255,255,255,0.45);max-width:560px;line-height:1.65; }
+        .back-bar { background:#070707;padding:18px 40px;border-bottom:1px solid rgba(255,255,255,0.06); }
+        .back-link { font-family:"Roboto Mono",monospace;font-size:0.7rem;letter-spacing:0.18em;color:#555;text-decoration:none;text-transform:uppercase;transition:color 0.2s; }
+        .back-link:hover { color:var(--red); }
+        .article-body { background:#0d0d0d;padding:80px 40px; }
+        .article-body-inner { max-width:740px;margin:0 auto; }
+        .article-body p { font-family:"Oswald",sans-serif;font-weight:300;font-size:1.05rem;line-height:1.9;color:rgba(255,255,255,0.6);margin-bottom:26px; }
+        .article-body p strong { color:#fff;font-weight:600; }
+        .pull-quote { border-left:4px solid var(--red);padding:18px 30px;margin:44px 0;background:rgba(229,9,20,0.04); }
+        .pull-quote p { font-family:"Bebas Neue",sans-serif!important;font-size:1.9rem!important;letter-spacing:0.04em;color:#fff!important;line-height:1.15!important;margin:0!important; }
+        .article-img-block { margin:44px 0;border:1px solid rgba(255,255,255,0.07);overflow:hidden; }
+        .article-img-block img { width:100%;height:380px;object-fit:cover;display:block;filter:grayscale(0.4);transition:filter 0.4s; }
+        .article-img-block:hover img { filter:grayscale(0); }
+        .article-img-cap { padding:10px 14px;font-family:"Roboto Mono",monospace;font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.12em;border-top:1px solid rgba(255,255,255,0.06); }
+        .player-spotlight { display:flex;align-items:center;gap:24px;border:1px solid rgba(229,9,20,0.25);padding:24px 28px;margin:36px 0;background:rgba(229,9,20,0.03); }
+        .player-spotlight-icon { font-family:"Bebas Neue",sans-serif;font-size:3.5rem;color:var(--red);line-height:1;flex-shrink:0; }
+        .player-spotlight-info { flex:1; }
+        .player-spotlight-label { font-family:"Roboto Mono",monospace;font-size:0.6rem;letter-spacing:0.25em;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:6px; }
+        .player-spotlight-name { font-family:"Bebas Neue",sans-serif;font-size:2rem;color:#fff;line-height:1; }
+        .player-spotlight-sub { font-family:"Roboto Mono",monospace;font-size:0.68rem;color:rgba(255,255,255,0.35);margin-top:4px; }
+        .article-divider { border:none;border-top:1px solid rgba(255,255,255,0.08);margin:44px 0; }
+        .article-tags { display:flex;flex-wrap:wrap;gap:10px;margin-top:52px; }
+        .article-tag { font-family:"Roboto Mono",monospace;font-size:0.65rem;letter-spacing:0.14em;padding:6px 14px;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.3);text-decoration:none;text-transform:uppercase;transition:all 0.2s; }
+        .article-tag:hover { border-color:var(--red);color:var(--red); }
+        .article-footer-note { font-family:"Roboto Mono",monospace;font-size:0.65rem;letter-spacing:0.2em;color:rgba(255,255,255,0.15); }
+        .related-section { background:#0a0a0a;padding:64px 40px;border-top:1px solid rgba(255,255,255,0.06); }
+        .related-section-inner { max-width:740px;margin:0 auto; }
+        .related-heading { font-family:"Roboto Mono",monospace;font-size:0.65rem;letter-spacing:0.3em;color:var(--red);text-transform:uppercase;margin-bottom:24px; }
+        .related-links { display:flex;flex-direction:column;gap:0; }
+        .related-link { display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.06);text-decoration:none;transition:padding-left 0.2s; }
+        .related-link:hover { padding-left:8px; }
+        .related-link-title { font-family:"Bebas Neue",sans-serif;font-size:1.3rem;color:#fff;transition:color 0.2s; }
+        .related-link:hover .related-link-title { color:var(--red); }
+        .related-link-date { font-family:"Roboto Mono",monospace;font-size:0.62rem;color:rgba(255,255,255,0.2);letter-spacing:0.12em; }
+        @media(max-width:768px){ .article-hero-content{padding:48px 20px;} .back-bar{padding:16px 20px;} .article-body{padding:52px 20px;} .related-section{padding:48px 20px;} .player-spotlight{flex-direction:column;gap:12px;} }
+    </style>
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-ring"></div>
+<div id="scroll-progress"></div><div class="noise-overlay"></div>
+
+<nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+        <a href="main.html" class="nav-logo"><img src="zenith_logo.png" alt="UE Zenith Esports" class="nav-logo-img"></a>
+        <div class="nav-links">
+            <a href="main.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a>
+            <a href="whatwedo.html" class="nav-link">What We Do</a><a href="activities.html" class="nav-link">Activities</a>
+            <a href="news.html" class="nav-link active">News &amp; Events</a>
+            <a href="contact.html" class="nav-link">Contact</a><a href="developers.html" class="nav-link-cta">Developers</a>
+        </div>
+        <button class="nav-burger" id="burger">☰</button>
+    </div>
+    <div class="nav-mobile" id="mobile-menu">
+        <a href="main.html">Home</a><a href="about.html">About</a><a href="whatwedo.html">What We Do</a>
+        <a href="activities.html">Activities</a><a href="news.html">News &amp; Events</a>
+        <a href="contact.html">Contact</a><a href="developers.html">Developers</a>
+    </div>
+</nav>
+
+<div class="back-bar"><a href="news.html" class="back-link">← Back to News &amp; Events</a></div>
+
+<section class="article-hero">
+    <img src="news2-768x432.png" alt="Ketchaku Showcased Incredible Skill" class="article-hero-img"
+         onerror="this.src='https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?auto=format&fit=crop&w=1600&q=80'">
+    <div class="article-hero-overlay"></div>
+    <div class="article-hero-content">
+        <div class="article-meta">
+            <span>15 / 05 / 2025</span><span>•</span>News<span>•</span>Player Spotlight
+        </div>
+        <h1 class="article-title"><span class="accent">KETCHAKU</span><br>SHOWCASED<br>INCREDIBLE SKILL</h1>
+        <p class="article-subtitle">Congratulations to Aaron Carmelo a.k.a. KETCHAKU for proudly representing UE Zenith Caloocan.</p>
+    </div>
+</section>
+
+<div class="article-body">
+    <div class="article-body-inner">
+        <p>When the lights are brightest, the best players shine. And on this occasion, <strong>Aaron Carmelo — known in the competitive scene as KETCHAKU</strong> — made sure everyone in the room remembered the name. Representing UE Zenith Esports – Caloocan, KETCHAKU delivered a performance that had no business being that clean.</p>
+
+        <div class="player-spotlight">
+            <div class="player-spotlight-icon">K</div>
+            <div class="player-spotlight-info">
+                <div class="player-spotlight-label">// Player Spotlight</div>
+                <div class="player-spotlight-name">KETCHAKU</div>
+                <div class="player-spotlight-sub">Aaron Carmelo &nbsp;•&nbsp; UE Zenith Caloocan &nbsp;•&nbsp; May 2025</div>
+            </div>
+        </div>
+
+        <p>KETCHAKU's showing was a master class in what it means to represent your organization at the highest level. Every mechanical decision was deliberate. Every moment of pressure was absorbed and converted into performance. He played not just with skill — he played with <strong>intent, confidence, and an unmistakable competitive identity</strong>.</p>
+
+        <div class="pull-quote"><p>"He didn't just show up. He showed everyone what UE Zenith is made of."</p></div>
+
+        <div class="article-img-block">
+            <img src="news2-768x432.png" alt="Ketchaku in competition"
+                 onerror="this.src='https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?auto=format&fit=crop&w=1200&q=80'">
+            <div class="article-img-cap">// Aaron Carmelo "KETCHAKU" — representing UE Zenith Caloocan with pride</div>
+        </div>
+
+        <p>This is what UE Zenith has been building toward. Developing players who don't just compete — but who carry the banner of this organization with every play they make. KETCHAKU's performance is proof that the investment in this team's development is paying off in real, visible, undeniable ways.</p>
+
+        <p>Moments like these matter beyond the result. They inspire the next wave of players, they validate the hard work done behind the scenes, and they remind the entire Zenith family of what we are capable of when everything comes together.</p>
+
+        <p><strong>Congratulations, KETCHAKU. You made UE Zenith proud.</strong></p>
+
+        <hr class="article-divider">
+        <p class="article-footer-note">WE RISE &nbsp;•&nbsp; WE GRIND &nbsp;•&nbsp; WE WIN AS ONE</p>
+        <div class="article-tags">
+            <a class="article-tag">#ZenithEsports</a>
+            <a class="article-tag">#UECaloocan</a>
+            <a class="article-tag">#Ketchaku</a>
+            <a class="article-tag">#PlayerSpotlight</a>
+            <a class="article-tag">#AaronCarmelo</a>
+        </div>
+    </div>
+</div>
+
+<section class="related-section">
+    <div class="related-section-inner">
+        <p class="related-heading">// More Stories</p>
+        <div class="related-links">
+            <a href="article-fought-with-heart.html" class="related-link">
+                <span class="related-link-title">UE ZENITH FOUGHT WITH HEART</span>
+                <span class="related-link-date">16 / 08 / 2025</span>
+            </a>
+            <a href="article-campus-legends.html" class="related-link">
+                <span class="related-link-title">CAMPUS LEGENDS ARE ON THE WAY</span>
+                <span class="related-link-date">29 / 07 / 2025</span>
+            </a>
+            <a href="article-runner-up.html" class="related-link">
+                <span class="related-link-title">UE ZENITH-CALOOCAN: 1ST RUNNER UP!</span>
+                <span class="related-link-date">15 / 05 / 2025</span>
+            </a>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <img src="zenith_logo.png" alt="UE Zenith Esports" class="footer-logo-img">
+            <div class="footer-brand-name">ZENITH ESPORTS</div>
+            <div class="footer-brand-sub">UE CALOOCAN</div>
+            <p class="footer-brand-desc">We rise higher, dominate stronger, and reach our Zenith.</p>
+        </div>
+        <div class="footer-nav-col">
+            <h4>// Navigation</h4>
+            <a href="main.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="whatwedo.html">What We Do</a>
+            <a href="activities.html">Activities</a>
+            <a href="news.html">News &amp; Events</a>
+            <a href="contact.html">Contact</a>
+            <a href="developers.html">Developers</a>
+        </div>
+        <div class="footer-social-col">
+            <h4>// Connect</h4>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/uezencal" target="_blank" class="footer-social">
+                    <span class="footer-social-icon">f</span> Facebook
+                </a>
+                <a href="mailto:ZenithCaloocan2025@gmail.com" class="footer-social">
+                    <span class="footer-social-icon">@</span> Email Us
+                </a>
+            </div>
+        </div>
+        <div class="footer-address-col">
+            <h4>// Address</h4>
+            <div class="footer-address">
+                <strong>UE Zenith Esports Caloocan</strong>
+                105 Samson Rd,<br>
+                Caloocan, Metro Manila,<br>
+                Philippines, 1400
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-copy">
+            <p>© 2026 UE Zenith Esports — Caloocan. All rights reserved.</p>
+        </div>
+        <div class="footer-tagline">WE RISE &nbsp;•&nbsp; WE GRIND &nbsp;•&nbsp; WE WIN AS ONE</div>
+    </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>
